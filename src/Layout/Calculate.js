@@ -6,7 +6,8 @@ import {
   Input,
   Label,
   Select,
-  Button
+  Button,
+  Image
 } from 'semantic-ui-react'
 
 const calculate = props => {
@@ -29,13 +30,25 @@ const calculate = props => {
 
   return (
     <Container textAlign="center">
-      <h1 style={{ paddingTop: '8%' }}>Credit Scoring Calculator</h1>
-      <Grid textAlign="center" style={{ paddingTop: '8%' }}>
+      <Image
+        src="https://res.cloudinary.com/getlinks/image/upload/v1481478099/ylksiakgcdw1uuzhvi5d.png"
+        size="small"
+        verticalAlign="middle"
+        style={{ paddingTop: '4%' }}
+      />
+      <Grid textAlign="center" style={{ paddingTop: '4%' }}>
         <Grid.Row>
-          <Grid.Column width={5} textAlign="right">
+          <h1>Credit Scoring Calculator</h1>
+        </Grid.Row>
+        <Grid.Row>
+          <Grid.Column width={3} textAlign="right">
             <h3>Period join Company</h3>
           </Grid.Column>
-          <Grid.Column width={3} textAlign="left">
+          <Grid.Column
+            width={2}
+            textAlign="left"
+            style={{ paddingRight: '0px' }}
+          >
             <Input
               placeholder="Year"
               labelPosition="right"
@@ -43,11 +56,15 @@ const calculate = props => {
               onChange={props.handlerYear}
               type="number"
             >
-              <input size="mini" />
+              <input size="mini" style={{ width: '70%' }} />
               <Label>Year</Label>
             </Input>
           </Grid.Column>
-          <Grid.Column width={3} textAlign="left">
+          <Grid.Column
+            width={2}
+            textAlign="left"
+            style={{ paddingLeft: '0px' }}
+          >
             <Input
               placeholder="Month"
               labelPosition="right"
@@ -55,7 +72,7 @@ const calculate = props => {
               type="number"
               onChange={props.handlerMonth}
             >
-              <input />
+              <input style={{ width: '85%' }} />
               <Label>Month</Label>
             </Input>
           </Grid.Column>
@@ -80,10 +97,14 @@ const calculate = props => {
           <Grid.Column width={6} textAlign="left">
             <Input
               placeholder="times"
+              labelPosition="right"
               style={{ width: '20%' }}
               type="number"
               onChange={props.handlerTimes}
-            />
+            >
+              <input />
+              <Label>times</Label>
+            </Input>
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
@@ -101,7 +122,7 @@ const calculate = props => {
         </Grid.Row>
         {props.calculate !== false ? (
           <Grid.Column textAlign="center" width={12}>
-            <h3>Credit Score : {props.creditscore}</h3>
+            <h1>Credit Score : {props.creditscore}</h1>
           </Grid.Column>
         ) : null}
         <Grid.Row textAlign="center">
