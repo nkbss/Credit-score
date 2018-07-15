@@ -36,9 +36,15 @@ const calculate = props => {
         verticalAlign="middle"
         style={{ paddingTop: '4%' }}
       />
-      <Grid textAlign="center" style={{ paddingTop: '4%' }}>
+      <Grid
+        textAlign="center"
+        style={{ paddingTop: '4%' }}
+        verticalAlign="middle"
+      >
         <Grid.Row>
-          <h1>Credit Scoring Calculator</h1>
+          <Grid.Column>
+            <h1 style={{ paddingBottom: '2%' }}>Credit Scoring Calculator</h1>
+          </Grid.Column>
         </Grid.Row>
         <Grid.Row>
           <Grid.Column width={3} textAlign="right">
@@ -125,7 +131,7 @@ const calculate = props => {
             <h1>Credit Score : {props.creditscore}</h1>
           </Grid.Column>
         ) : null}
-        <Grid.Row textAlign="center">
+        <Grid.Row textAlign="center" style={{ paddingTop: '2%' }}>
           <Button
             basic
             color="black"
