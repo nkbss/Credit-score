@@ -7,35 +7,24 @@ class App extends Component {
   state = {
     year: 0,
     month: 0,
-    gender: 0,
+    gender: null,
     times: 0,
-    edlevel: 0,
-    creditscore: null,
+    edlevel: null,
+    creditscore: 0,
     yearscore: 0,
     calculate: false
   }
 
-  handlerYear = event => {
-    this.setState({ year: event.target.value })
+  handlerInput = (event, data) => {
+    this.setState({ [data.name]: event.target.value })
   }
 
-  handlerMonth = event => {
-    this.setState({ month: event.target.value })
-  }
-
-  handlerGender = (event, data) => {
-    this.setState({ gender: data.value })
-  }
-
-  handlerTimes = event => {
-    this.setState({ times: event.target.value })
-  }
-
-  handlerEdlevel = (event, data) => {
-    this.setState({ edlevel: data.value })
+  handlerDropdown = (event, data) => {
+    this.setState({ [data.name]: data.value })
   }
 
   calculateCreditScore = () => {
+    this.setState({ clicked: true })
     const { year, month, gender, times, edlevel } = this.state
     let yearMonth,
       yearscore,
@@ -80,17 +69,14 @@ class App extends Component {
       this.setState({ creditscore: 'C' })
     }
     this.setState({ calculate: true })
+    console.log(this.state)
   }
 
   render() {
-    // console.log(1 + 1)
     return (
       <Calculate
-        handlerYear={this.handlerYear}
-        handlerMonth={this.handlerMonth}
-        handlerGender={this.handlerGender}
-        handlerTimes={this.handlerTimes}
-        handlerEdlevel={this.handlerEdlevel}
+        handlerInput={this.handlerInput}
+        handlerDropdown={this.handlerDropdown}
         calculateCreditScore={this.calculateCreditScore}
         calculate={this.state.calculate}
         creditscore={this.state.creditscore}
